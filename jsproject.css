@@ -1,0 +1,88 @@
+/*
+jwallace17@georgefox.edu
+Dynamic JS Project
+2020-04-03
+*/
+
+/*
+Sets the background image.
+*/
+html {
+    background-image: url("graybackground.jpg");
+    background-size: cover;
+}
+
+/*
+Formats the link to look like a button
+*/
+a {
+    border-radius: 4px;
+    background-color: #f4a91e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    float: center;
+    font-family: monospace;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    border: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+/*
+The following four selectors create the animation of moving text on the link. The following is adapted from W3 schools.
+*/
+  a span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  a span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  a:hover span {
+    padding-right: 25px;
+  }
+  
+  a:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+/*
+Formats the header text.
+*/
+  h1 {
+    text-align: center;
+    font-family: monospace;
+    font-size: 50px;
+    font-weight: 500;
+  }
+
+/*
+Formats the explanation of the game.
+*/
+  h2{
+    text-align: center;
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+/*
+Aligns the link to the center of the screen.
+*/
+  div {
+      text-align: center;
+  }
