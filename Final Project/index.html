@@ -1,0 +1,94 @@
+<!--
+jwallace17@georgefox.edu
+Final Project
+2020-04-24
+-->
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stock Data</title>
+        <link rel="stylesheet" href="FinalProject.css">
+        <script
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous"></script>
+        <script>
+
+            // makes a call to the iex cloud server; a json object containing information about a given stock and company is returned
+            function ajaxCall(){
+
+                // retrieves the ticker entered into the textbox below
+                var ticker = $("#ticker").val();
+
+                $.ajax({
+                    url: "https://cloud.iexapis.com/stable/stock/" + ticker + "/quote/?token=pk_4e5367d8d6084f619512e790df1a73a7",
+                    dataType: "json",
+                    method: "GET",
+                    success: successFunction1,
+                    error: errorFunction        
+            })
+                $.ajax({
+                    url: "https://cloud.iexapis.com/stable/stock/" + ticker + "/company/?token=pk_4e5367d8d6084f619512e790df1a73a7",
+                    dataType: "json",
+                    method: "GET",
+                    success: successFunction2
+                })
+            }
+
+            // takes the retrieved json object and displays its relevant parts
+            function successFunction1(quote) {
+                
+                $("#companyinfo").html(quote.companyName);
+                $("#companyticker").html(quote.symbol);
+                $("#stockprice").html(quote.latestPrice);
+                $("#high").html(quote.high);
+                $("#low").html(quote.low);
+                $("#week52High").html(quote.week52High);
+                $("#week52Low").html(quote.week52Low);
+                $("#peRatio").html(quote.peRatio);
+            }
+
+            // takes the retrievved json object and displays its relevant parts
+            function successFunction2(company) {
+                console.log(company);
+
+                $("#CEO").html(company.CEO);
+                $("#website").html(company.website);
+                $("#sector").html(company.sector);
+                $("#industry").html(company.industry);
+                $("#employees").html(company.employees);
+            }
+            
+            // alerts the user that they entered an invalid ticker
+            function errorFunction() {
+                alert("Invalid Ticker");
+            }         
+        </script>   
+    </head>
+    <body>
+        <h1>Stock Information Website</h1>
+        <h3>Enter any stock ticker in the textbox below to retrieve data on that stock and display it</h3>
+        <p id="companyInfo">
+            Company/(Asset) Name: <span id="companyinfo"></span> <br>
+            Company Ticker: <span id="companyticker"></span> <br>
+            Latest Stock Price: <span id="stockprice"></span> <br>
+            High: <span id="high"></span> <br>
+            Low: <span id="low"></span> <br>
+            52 Week High: <span id="week52High"></span> <br>
+            52 Week Low: <span id="week52Low"></span> <br>
+            PE Ratio: <span id="peRatio"></span> <br>
+            CEO: <span id="CEO"></span> <br>
+            Website: <span id="website"></span> <br>
+            Sector: <span id="sector"></span> <br>
+            Industry: <span id="industry"></span> <br>
+            # of Employees: <span id="employees"></span> <br>
+        </p>
+        <form>
+            <label for="ticker">Enter Company Ticker:</label>
+            <input type="text" id="ticker">
+        </form>
+        <button onclick="ajaxCall()">Submit</button>
+    </body>
+</html>
