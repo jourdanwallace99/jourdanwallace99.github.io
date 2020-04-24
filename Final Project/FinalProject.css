@@ -1,0 +1,57 @@
+/*
+jwallace17@georgefox.edu
+Final Project
+2020-04-24
+*/
+
+/*
+Sets the background color and font of the webpage.
+*/
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: gray;
+}
+
+/*
+Sets the font size and style of the main section.
+*/
+#companyInfo {
+    font-size: 23px;
+    font-style: oblique;
+}
+
+/*
+Sets the text of the header to the center.
+*/
+h1, h3 {
+    text-align: center;
+}
+
+/*
+Sets the styling of the submit button.
+*/
+button {
+    background-color: rgb(84, 100, 133);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  /*
+  Sets the styling of the textbox.
+  */
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
